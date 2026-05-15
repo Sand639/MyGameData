@@ -3,7 +3,7 @@ version: '3.8'
 services:
   # ① Webサーバー（PHP）の箱
   web:
-    image: php:8.2-apache
+    build: .
     ports:
       - "8080:80"
     volumes:
