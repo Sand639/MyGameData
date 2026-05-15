@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  # ① Webサーバー（PHP）の箱
+  web:
+    image: php:8.2-apache
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html/
+    depends_on:
+      - db
+
+  # ② データベース（MySQL）の箱
+  db:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: gamedb
