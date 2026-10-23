@@ -1,11 +1,9 @@
-version: '3.8'
-
 services:
   # ① Webサーバー（PHP）の箱
   web:
     build: .
     ports:
-      - "8080:80"
+      - "127.0.0.1:8080:80"   # 自分のPCからだけ開ける
     volumes:
       - ./:/var/www/html/
     depends_on:
@@ -13,9 +11,9 @@ services:
 
   # ② データベース（MySQL）の箱
   db:
-    image: mysql:8.0
+    image: mysql:8.4
     ports:
-      - "3306:3306"
+      - "127.0.0.1:3306:3306" # 自分のPCからだけ繋げる
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: gamedb
